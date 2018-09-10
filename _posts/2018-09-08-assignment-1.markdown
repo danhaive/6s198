@@ -26,18 +26,18 @@ function onSpecialButtonClick() {
 #### Experiment 1: Can the machine differentiate my face from a plant and the background?
 Yes! And it does so with high confidence (100%).
 #### Me
-![img1](/assets/assignment-1/tm_test_4_1_1.PNG)
+![img1]({{ site.baseurl }}/assets/assignment-1/tm_test_4_1_1.PNG)
 #### My plant (it's a money tree)
-![img2](/assets/assignment-1/tm_test_4_1_2.PNG)
+![img2]({{ site.baseurl }}/assets/assignment-1/tm_test_4_1_2.PNG)
 #### The background (note the nice MIT ceilings!)
-![img3](/assets/assignment-1/tm_test_4_1_3.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_1_3.PNG)
 
 #### Experiment 2: What if I try to confuse the machine on purpose?
 Here, I "trained" the model on what is essentially the same image. The result is unstable predictions, and low confidence 
 (55% or 11/20 nearest neighbors for the top class). 
 This makes complete sense: the images are all located in the same region of the 1000-dimension logits space.
 
-![img4](/assets/assignment-1/tm_test_4_2_1.PNG)
+![img4]({{ site.baseurl }}/assets/assignment-1/tm_test_4_2_1.PNG)
 
 #### Experiment 3: Does the model learn what I want to teach it?
 
@@ -53,15 +53,15 @@ chosen (cosine similarity) in the 1000-dimensional logits space.
 #### Training Class 1: Open Fist <-> Cat
 I'm at my desk while training the model.
 
-![img1](/assets/assignment-1/tm_test_4_3_1.PNG)
+![img1]({{ site.baseurl }}/assets/assignment-1/tm_test_4_3_1.PNG)
 #### Training Class 2: Closed Fist <-> Pomeranian
 I'm in a conference room while training the model.
 
-![img2](/assets/assignment-1/tm_test_4_3_2.PNG)
+![img2]({{ site.baseurl }}/assets/assignment-1/tm_test_4_3_2.PNG)
 #### Testing: Open Fist Gives Pomeranian (WRONG)
-![img3](/assets/assignment-1/tm_test_4_3_3.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_3_3.PNG)
 #### Testing: Closed Fist Gives Cat (WRONG)
-![img3](/assets/assignment-1/tm_test_4_3_4.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_3_4.PNG)
 
 #### Experiment 4: Will the machine be confused if I train it with a bike helmet on and test it without the bike helmet?
 
@@ -75,17 +75,17 @@ if you think of the problem in terms of the distance metric. Still, it's really 
 accounts for the differences between the classes by design.
 
 #### Training Class 1 with Helmet: Tongue Out + Thumb Up <-> Cat
-![img1](/assets/assignment-1/tm_test_4_4_1.PNG)
+![img1]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_1.PNG)
 #### Training Class 2 with Helmet: All Good <-> Pomeranian
-![img2](/assets/assignment-1/tm_test_4_4_2.PNG)
+![img2]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_2.PNG)
 #### Training Class 3 with Helmet: Hello <-> Bunny
-![img3](/assets/assignment-1/tm_test_4_4_3.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_3.PNG)
 #### Testing without Helmet: Tongue Out + Thumb Up <-> Cat (CORRECT)
-![img3](/assets/assignment-1/tm_test_4_4_4.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_4.PNG)
 #### Testing without Helmet: All Good <-> Pomeranian (CORRECT)
-![img3](/assets/assignment-1/tm_test_4_4_5.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_5.PNG)
 #### Testing without Helmet: Closed Fist Gives Cat (CORRECT)
-![img3](/assets/assignment-1/tm_test_4_4_6.PNG)
+![img3]({{ site.baseurl }}/assets/assignment-1/tm_test_4_4_6.PNG)
 
 ## 5 Scaling the Confidence Values
 ### 5.1 Modifying the Computation of Confidence Values
@@ -136,7 +136,7 @@ from one class to another with 100% confidence. That does not make much sense gi
 in fact happening at the same time. As a result, predicting as likely any class with a nearest neighor works 
 well in this case. It simply tells us: *"Yes, these three things are happening all at once."*
 
-![img](/assets/assignment-1/tm_test_5_1_1.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_5_1_1.PNG)
 
 ### 5.3 Second Method for Object Detection
 The second method can be useful for object detection. In a sense, the reported confidence values do not make sense from a probabilistic point of view because the class 
@@ -149,12 +149,12 @@ be quite confused. However, with the proposed method, the machine tells me: *"Ye
 doing both things at the same time"*. That's what I call a smart machine!
 
 ### Training Class 1: Tongue Out <-> Cat
-![img](/assets/assignment-1/tm_test_5_1_2.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_5_1_2.PNG)
 ### Training Class 2: Keys <-> Pomeranian
-![img](/assets/assignment-1/tm_test_5_1_3.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_5_1_3.PNG)
 ### Testing: Tongue Out + Keys <-> Cat + Pomeranian (Correct)
 Note the confidence levels!
-![img](/assets/assignment-1/tm_test_5_1_4.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_5_1_4.PNG)
 
 ## 6 Limiting the Number of Training Examples per Class
 ### 6.1 Implementation
@@ -188,19 +188,19 @@ As the images below show, the model still works pretty well. However, prediction
 than previously observed.
 
 ### Testing Class 1: Me <-> Cat (CORRECT)
-![img](/assets/assignment-1/tm_test_6_1_1.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_6_1_1.PNG)
 ### Training Class 2: Me + Thumb Up <-> Pomeranian (CORRECT)
-![img](/assets/assignment-1/tm_test_6_1_2.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_6_1_2.PNG)
 ### Training Class 2: Background Only <-> Bunny (CORRECT)
-![img](/assets/assignment-1/tm_test_6_1_3.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_6_1_3.PNG)
 
 I then tried something harder, only with two classes this time. For the training, 
 I closed my left and right eyes for class 1 and 2, respectively.
 
 ### Testing Class 1: Left Eye Closed <-> Cat (CORRECT)
-![img](/assets/assignment-1/tm_test_6_1_4.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_6_1_4.PNG)
 ### Training Class 2: Left Eye Closed <-> Cat  (INCORRECT)
-![img](/assets/assignment-1/tm_test_6_1_5.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_6_1_5.PNG)
 
 With such a nuanced difference and because of the imbalance in number of training samples per class, the system does not work well.
 
@@ -215,7 +215,7 @@ Why? Because the classifier predicts based on the class of only one nearest neig
 As a result, all you need is one outlier or one misclassified training sample to completely throw off the model. 
 In a sense, this is a form of overfitting. I can replicate this fairly easily:
        
-![img](/assets/assignment-1/tm_test_7_1_1.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_7_1_1.PNG)
 
 Here, I trained class 1 with "thumb up" and class 2 ith "no thumb up". I 'accidentally' trained class 1 with a couple of
 "no thumb up" images, and it did indeed throw off the model as expected.  
@@ -227,7 +227,7 @@ values with enough granularity. On the other hand, K should be small enough to g
 ### Remove a Class
 To do this, I simply tinkled around with the html to remove the interactions with a third class, and I changed a couple 
 global constants here and there.
-![img](/assets/assignment-1/tm_test_7_1_2.PNG)
+![img]({{ site.baseurl }}/assets/assignment-1/tm_test_7_1_2.PNG)
 I also considered adding a class for a moment, but, upon inspection of the code, which contained 
 hard-coded constants and variables all over the place, I preferred to call it a day!
  
