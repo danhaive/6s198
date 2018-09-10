@@ -1,0 +1,9 @@
+
+
+.idea/
+.sass-cache
+.jekyll-metadata
+
+_site
+
+# End of https://www.gitignore.io/api/visualstudiocode
