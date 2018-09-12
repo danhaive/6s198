@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Assignment 2 | Multilayer Networks"
+title:  "Assignment 2"
 date:   2018-09-11 23:27:01 -0400
 categories: assignments
 ---
