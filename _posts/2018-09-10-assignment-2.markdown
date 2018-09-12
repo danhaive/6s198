@@ -80,7 +80,7 @@ We've seen this one before. Here are some training stats:
 * Examples/sec: 1390
 * Examples trained: 4992
 * Total time: 4.4 sec
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_1.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_1.png)
 #### Model with 2 Fully Connected Layers (1 Top Layer with 100 Hidden Units and ReLu Activation)
 * Examples/sec: 748
 * Examples trained: 32640
