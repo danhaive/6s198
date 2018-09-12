@@ -85,22 +85,22 @@ We've seen this one before. Here are some training stats:
 * Examples/sec: 748
 * Examples trained: 32640
 * Total time: 43.3 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_2.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_2.png)
 #### Model with 3 Fully Connected Layers (2 Top Layers with 100 Hidden Units and ReLu Activations)
 * Examples/sec: 728
 * Examples trained: 25536
 * Total time: 42.1 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_3.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_3.png)
 #### Model with 4 Fully Connected Layers (3 Top Layers with 100 Hidden Units and ReLu Activations)
 * Examples/sec: 556
 * Examples trained: 25664
 * Total time: 50.8 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_4.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_4.png)
 #### Model with 5 Fully Connected Layers (4 Top Layers with 100 Hidden Units and ReLu Activations)
 * Examples/sec: 524
 * Examples trained: 26240
 * Total time: 61.4 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_5.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_1_5.png)
 ### 4.2 Experimenting with Layer Width
 Both models achieved a similar testing accuracy, although the second one required longer training, which seems due to instability in 
 the optimization procedure at the beginning. In general, I would have expected the second architecture to do worse. 
@@ -111,13 +111,13 @@ hidden units.
 * Examples/sec: 674
 * Examples trained: 15424
 * Total time: 27.3 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_2_1.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_2_1.png)
 #### Model 2: Top Layer with 20 HUs and Second Layer with 100 HUs
 * Testing Accuracy: 90.6%
 * Examples/sec: 525
 * Examples trained: 28736
 * Total time: 57.2 sec.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_2_2.PNG)
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_4_2_2.png)
 ### 4.3 Test on Other Datasets
 I tried the first experiment on CIFAR 10. In particular, with 5, 4, 3, 2 FC layers, and after about 15,000 samples, 
 the model achieved a testing accuracy of respectively 39.1%, 40.6%, 45.3%, and 35.9%. In other words, they were all similarly terrible, 
