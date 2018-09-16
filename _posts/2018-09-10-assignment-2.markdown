@@ -123,7 +123,69 @@ I tried the first experiment on CIFAR 10. In particular, with 5, 4, 3, 2 FC laye
 the model achieved a testing accuracy of respectively 39.1%, 40.6%, 45.3%, and 35.9%. In other words, they were all similarly terrible, 
 most likely because this classification task is harder and requires the use of CNNs.
 I tested experiment 4.2 on the the Fashion MNIST dataset, and the result was similar, i.e. both models achieved a similar testing accuracy 
-at the end, but the narrow-top architecture was lower to converge.
+at the end, but the narrow-top architecture was slower to converge.
+
+## Problem 5
+Increasing the number of batches essentially amount to increasing the number of iterations for the optimizer. 
+Unsurprisingly, the objective---the training loss---is further reduced with more batches.  
+
+* `BATCH_SIZE = 20`, `NUM_ BATCHES = 50`: training loss = 1.92
+* `BATCH_SIZE = 20`, `NUM_BATCHES = 100`: training loss = 1.58
+* `BATCH_SIZE = 20`, `NUM_BATCHES = 200`: training loss = 1.33
+* `BATCH_SIZE = 20`, `NUM_BATCHES = 400`: training loss = 0.92  
+
+Increasing the batch size stabilizes the convergence of the optimizer, and the training loss graph is less noisy.
+As the batch size increases, the optimizer tends to a 'true' gradient descent algorithm.
+
+## Problem 6
+
+### 6.1 Examples of Poor Performance
+The model misclassifies the digit below as an 8 (probability: 0.159) instead of 1 (probability: 0.145), most likely because 
+the digit is drawn slanted and ressembles one of the diagonals of a typical 8.
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_1.png)  
+This one is correctly classified as a 1 (probabilty: 0.173), even if the model still thinks it could be an 8 with 0.142 
+probability.
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_3.png)  
+The digit below is classified as a 2 (probability: 0.198) instead of 5 (probability: 0.109).
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_2.png) 
+
+### 6.2 Changing the Batch Size and the Number of Batches
+* `BATCH_SIZE = 20`, `NUM_BATCHES = 100`: accuracy = 55%
+* `BATCH_SIZE = 20`, `NUM_BATCHES = 400`: accuracy = 80% (great improvement)
+* `BATCH_SIZE = 50`, `NUM_BATCHES = 400`: accuracy = 84% (best)
+* `BATCH_SIZE = 100`, `NUM_BATCHES = 500`: accuracy = 82% (a little worse)
+* `BATCH_SIZE = 50`, `NUM_BATCHES = 500`: accuracy = 82% (a little worse)
+* `BATCH_SIZE = 50`, `NUM_BATCHES = 1000`: accuracy = 84% (a little worse)
+
+Increasing the number of batches has a dramatic improvement on the testing accuracy, but, past a certain point, it does not make much 
+of a difference because the model is too limited.
+
+### 6.3 Construct Model
+Because we already experimented a lot with Model Builder in the beginning of the asssignment, I chose to implement one of the best 
+architectures I have explored, i.e. 3 top layers with 100 hidden units and relu activation and a bottom layer with 10 hidden units and 
+softmax activation.
+
+## Problem 7
+
+## Style Transfer
+### Kandinskian Desert
+![img]({{ site.baseurl }}/assets/assignment-2/kandinsky_style_desert.jpg) 
+#### Original
+![img]({{ site.baseurl }}/assets/assignment-2/desert.jpg) 
+#### Style: Blue Segment, Kandisnky, 1921
+![img]({{ site.baseurl }}/assets/assignment-2/kandinsky.jpg) 
+### Monet's Winter
+![img]({{ site.baseurl }}/assets/assignment-2/monet_style_winter.jpg) 
+#### Original
+![img]({{ site.baseurl }}/assets/assignment-2/winter-scene-snow-sun-trees-winter.jpg) 
+#### Style: The Magpie, Monet, 1869
+![img]({{ site.baseurl }}/assets/assignment-2/monet-themagpie.jpg)
+### Seurat's California
+![img]({{ site.baseurl }}/assets/assignment-2/california_seurat_styl.jpg) 
+#### Original
+![img]({{ site.baseurl }}/assets/assignment-2/IMG_2392.jpg) 
+#### Style: The Seine and la Grande Jatte, Seurat, 1888
+![img]({{ site.baseurl }}/assets/assignment-2/seurat_georges_3.jpg)
 
 
 
