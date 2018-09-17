@@ -141,13 +141,18 @@ As the batch size increases, the optimizer tends to a 'true' gradient descent al
 
 ### 6.1 Examples of Poor Performance
 The model misclassifies the digit below as an 8 (probability: 0.159) instead of 1 (probability: 0.145), most likely because 
-the digit is drawn slanted and ressembles one of the diagonals of a typical 8.
-![img]({{ site.baseurl }}/assets/assignment-2/6_1_1.png)  
+the digit is drawn slanted and ressembles one of the diagonals of a typical 8.  
+
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_1.png){:width="50%"}  
+
 This one is correctly classified as a 1 (probabilty: 0.173), even if the model still thinks it could be an 8 with 0.142 
-probability.
-![img]({{ site.baseurl }}/assets/assignment-2/6_1_3.png)  
-The digit below is classified as a 2 (probability: 0.198) instead of 5 (probability: 0.109).
-![img]({{ site.baseurl }}/assets/assignment-2/6_1_2.png) 
+probability.  
+
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_3.png){:width="50%"}  
+
+The digit below is classified as a 2 (probability: 0.198) instead of 5 (probability: 0.109).  
+
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_2.png){:width="50%"}
 
 ### 6.2 Changing the Batch Size and the Number of Batches
 * `BATCH_SIZE = 20`, `NUM_BATCHES = 100`: accuracy = 55%
@@ -203,7 +208,7 @@ model.compile({
   loss: 'categoricalCrossentropy',
   metrics: ['accuracy']
 });
-{% end highlight%}
+{% endhighlight%}
 For MNIST, the improvement is not dramatic, and the testing accuracy after 1000 batches of 100 samples peaks at 86%.  
 Testing Accuracy for MNIST with MLP
 ![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_3_1.png)
@@ -266,34 +271,34 @@ model.compile({
   loss: 'categoricalCrossentropy',
   metrics: ['accuracy']
 });
-{% end highlight %}
+{% endhighlight %}
 The architecture of the CNN is simple, but its performance is superior to the MLP on the MNIST dataset (96% accuracy).
 ![img]({{ site.baseurl }}/assets/assignment-2/6_3_4.png) 
 However, the performance worsens for Fashion MNIST. The model architecture may be too simplistic.
 ![img]({{ site.baseurl }}/assets/assignment-2/6_3_5.png) 
 ## Problem 7
-* [index.js for MLP](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_MLP.txt)
-* [index.js for CNN](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_CNN.txt)
+* [index.js for MLP](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_MLP.js)
+* [index.js for CNN](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_CNN.js)
 
 ## Style Transfer
 ### Kandinskian Desert
-![img]({{ site.baseurl }}/assets/assignment-2/kandinsky_style_desert.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/kandinsky_style_desert.jpg){:width="100%"}
 #### Original
-![img]({{ site.baseurl }}/assets/assignment-2/desert.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/desert.jpg){:width="100%"}
 #### Style: Blue Segment, Kandisnky, 1921
-![img]({{ site.baseurl }}/assets/assignment-2/kandinsky.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/kandinsky.jpg){:width="100%"} 
 ### Monet's Winter
-![img]({{ site.baseurl }}/assets/assignment-2/monet_style_winter.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/monet_style_winter.jpg){:width="100%"} 
 #### Original
-![img]({{ site.baseurl }}/assets/assignment-2/winter-scene-snow-sun-trees-winter.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/winter-scene-snow-sun-trees-winter.jpg){:width="100%"} 
 #### Style: The Magpie, Monet, 1869
-![img]({{ site.baseurl }}/assets/assignment-2/monet-themagpie.jpg)
+![img]({{ site.baseurl }}/assets/assignment-2/monet-themagpie.jpg){:width="100%"}
 ### Seurat's California
-![img]({{ site.baseurl }}/assets/assignment-2/california_seurat_styl.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/california_seurat_styl.jpg){:width="100%"} 
 #### Original
-![img]({{ site.baseurl }}/assets/assignment-2/IMG_2392.jpg) 
+![img]({{ site.baseurl }}/assets/assignment-2/IMG_2392.jpg){:width="100%"} 
 #### Style: The Seine and la Grande Jatte, Seurat, 1888
-![img]({{ site.baseurl }}/assets/assignment-2/seurat_georges_3.jpg)
+![img]({{ site.baseurl }}/assets/assignment-2/seurat_georges_3.jpg){:width="100%"}
 
 
 
