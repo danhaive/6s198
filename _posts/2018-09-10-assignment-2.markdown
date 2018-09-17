@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Assignment 2"
-date:   2018-09-11 23:27:01 -0400
+date:   2018-09-16 23:27:01 -0400
 categories: assignments
 ---
 
@@ -142,12 +142,12 @@ As the batch size increases, the optimizer tends to a 'true' gradient descent al
 ### 6.1 Examples of Poor Performance
 The model misclassifies the digit below as an 8 (probability: 0.159) instead of 1 (probability: 0.145), most likely because 
 the digit is drawn slanted and ressembles one of the diagonals of a typical 8.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_1.png)  
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_1.png)  
 This one is correctly classified as a 1 (probabilty: 0.173), even if the model still thinks it could be an 8 with 0.142 
 probability.
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_3.png)  
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_3.png)  
 The digit below is classified as a 2 (probability: 0.198) instead of 5 (probability: 0.109).
-![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_1_2.png) 
+![img]({{ site.baseurl }}/assets/assignment-2/6_1_2.png) 
 
 ### 6.2 Changing the Batch Size and the Number of Batches
 * `BATCH_SIZE = 20`, `NUM_BATCHES = 100`: accuracy = 55%
@@ -162,9 +162,115 @@ of a difference because the model is too limited.
 
 ### 6.3 Construct Model
 Because we already experimented a lot with Model Builder in the beginning of the asssignment, I chose to implement one of the best 
-architectures I have explored, i.e. 3 top layers with 100 hidden units and relu activation and a bottom layer with 10 hidden units and 
-softmax activation.
+architectures I have explored, i.e. a multilayer perceptron with 3 top dense layers with 100 hidden units and relu activation 
+and a bottom layer with 10 hidden units and 
+softmax activation. 
+{% highlight javascript %}
+const model = tf.sequential();
 
+// First flatten the image
+// First layer must have an input shape defined.
+model.add(tf.layers.flatten({
+  inputShape: image_shape
+}))
+
+// Add 3 fully connected (dense) layers with ReLu Activation
+model.add(tf.layers.dense({
+    units: 100,
+    kernelInitializer: 'varianceScaling',
+    activation: 'relu'
+}));
+model.add(tf.layers.dense({
+    units: 100,
+    kernelInitializer: 'varianceScaling',
+    activation: 'relu'
+}));
+model.add(tf.layers.dense({
+    units: 100,
+    kernelInitializer: 'varianceScaling',
+    activation: 'relu'
+}));
+// Add a fully connected (dense) layer
+model.add(tf.layers.dense({
+  units: 10, 
+  kernelInitializer: 'varianceScaling'
+}));
+
+model.add(tf.layers.softmax());
+
+model.compile({
+  optimizer: 'sgd', 
+  loss: 'categoricalCrossentropy',
+  metrics: ['accuracy']
+});
+{% end highlight%}
+For MNIST, the improvement is not dramatic, and the testing accuracy after 1000 batches of 100 samples peaks at 86%.  
+Testing Accuracy for MNIST with MLP
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_3_1.png)
+  
+Testing Accuracy for Fashion MNIST with MLP
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_3_2.png)
+  
+Testing Accuracy for CIFAR-10 with MLP
+![img]({{ site.baseurl }}/assets/assignment-2/accuracy_6_3_3.png)
+
+MLP's are not good at image classification, because they do not easily extract meaningful features from image data.  
+To improve performance, I also implemented a simple CNN.
+{% highlight javascript %}
+const model = tf.sequential();
+
+// First flatten the image
+// First layer must have an input shape defined.
+model.add(tf.layers.conv2d({
+    inputShape: image_shape,
+    strides: [1,1],
+    filters: 8,
+    kernelSize:[5,5],
+    padding: "valid",
+    activation: 'relu'
+}))
+model.add(tf.layers.maxPooling2d({
+    inputShape: [image_shape[0]-4,image_shape[1]-4, 8],
+    strides: [2,2],
+    poolSize: [2,2]
+}))
+
+model.add(tf.layers.conv2d({
+    inputShape: [(image_shape[0]-4)/2,(image_shape[1]-4)/2, 16],
+    strides: [1,1],
+    filters: 16,
+    kernelSize:[3,3],
+    padding: "valid",
+    activation: 'relu'
+}))
+
+model.add(tf.layers.maxPooling2d({
+    inputShape: [(image_shape[0]-4)/2-2,(image_shape[1]-4)/2-2, 16],
+    strides: [2,2],
+    poolSize: [2,2]
+}))
+
+model.add(tf.layers.flatten({
+  inputShape: [((image_shape[0]-4)/2-2)/2,((image_shape[1]-4)/2-2)/2, 16]
+}))
+// Add a fully connected (dense) layer
+model.add(tf.layers.dense({
+  units: 10, 
+  kernelInitializer: 'varianceScaling'
+}));
+
+model.add(tf.layers.softmax());
+
+model.compile({
+  optimizer: 'sgd', 
+  loss: 'categoricalCrossentropy',
+  metrics: ['accuracy']
+});
+{% end highlight %}
+The architecture of the CNN is simple, but its performance is superior to the MLP on the MNIST dataset (96% accuracy).
+![img]({{ site.baseurl }}/assets/assignment-2/6_3_4.png) 
+However, the performance worsens for Fashion MNIST. The model architecture may be too simplistic.
+![img]({{ site.baseurl }}/assets/assignment-2/6_3_5.png) 
 ## Problem 7
 
 ## Style Transfer
