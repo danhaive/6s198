@@ -272,6 +272,8 @@ The architecture of the CNN is simple, but its performance is superior to the ML
 However, the performance worsens for Fashion MNIST. The model architecture may be too simplistic.
 ![img]({{ site.baseurl }}/assets/assignment-2/6_3_5.png) 
 ## Problem 7
+* [index.js for MLP](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_MLP.js)
+* [index.js for CNN](https://github.com/danhaive/6s198/blob/master/assets/assignment-2/index_CNN.js)
 
 ## Style Transfer
 ### Kandinskian Desert
