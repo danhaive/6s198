@@ -68,7 +68,7 @@ abstract.
 * Flattening Layer
 * Dense Layer with 64 Units
 * Dense Layer with 10 Units and Softmax Activation
-{% highlight javascript %
+{% highlight javascript %}
 const model = tf.sequential();
 model.add(tf.layers.conv2d({
     inputShape: image_shape,
