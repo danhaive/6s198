@@ -58,17 +58,17 @@ And we get the following visualization. Not very illuminating...
 For our project, Diego (Pinochet) and I still need to discuss which is the best idea going forward. That said, 
 we have thought about potential data collection strategies for each idea to evaluate their feasibility.  
   
-### Idea 1: Generating Images of Fake Architecture
+#### Idea 1: Generating Images of Fake Architecture
 For this project, we would need to collect a large number of images from the Internet. Scraping architecture websites 
 for images and metadata (e.g. building type, architect, etc.) is probably the best way to go about it. To do so, we 
 can use BeautifulSoup. This might take a while however, because we will probably need to collect hundreds of 
 thousands of images. There's also an important risk of collecting a lot of junk.
 
-### Idea 2: Lego Recipe
+#### Idea 2: Lego Recipe
 There's a Lego dataset on Kaggle, and that's probably what we would use. We haven't looked in detail at the dataset, so 
 we'll have to confirm the data is usable.
 
-### Idea 3: Skecth to 3D Geometry by Adapting Sketch-RNN and 3D GANs
+#### Idea 3: Skecth to 3D Geometry by Adapting Sketch-RNN and 3D GANs
 This one's also fairly easy. The 3D GAN model and data is available, and so is the Quick Draw! dataset used to build 
 Sketch-RNN.
 
