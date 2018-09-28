@@ -55,7 +55,7 @@ And we get the following visualization. Not very illuminating...
 
 
 ## Brainstorm Data Collection Strategy
-For our project, Diego (Pinochet) and I still need to discuss which is the best idea going forward. That said, 
+For our project, Diego (Pinochet) and I still need to discuss what is the best idea going forward. That said, 
 we have thought about potential data collection strategies for each idea to evaluate their feasibility.  
   
 #### Idea 1: Generating Images of Fake Architecture
